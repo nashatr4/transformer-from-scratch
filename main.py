@@ -17,6 +17,11 @@ d_ff = 2048
 input_tokens = np.random.randint(0, vocab_size, size=(batch_size, seq_len))
 mask = causal_mask(seq_len)
 
+print("1. Bukti Uji Masking")
+print(f"   Bentuk Causal Mask: {mask.shape}")
+print(mask[0, 0, :, :])
+
+print("\n2. Pengecekan Dimensi:")
 print(f"Bentuk Input Tokens: {input_tokens.shape}\n")
 
 # Inisialisasi seluruh komponen
@@ -56,6 +61,7 @@ probabilities = softmax(logits)
 print(f"\nBentuk Logits Akhir: {logits.shape}")
 print(f"Bentuk Probabilitas Akhir: {probabilities.shape}") 
 
+print("\n3. Bukti Uji Softmax:")
 # Probabilitas token berikutnya 
 next_token_prob = probabilities[:, -1, :]
 

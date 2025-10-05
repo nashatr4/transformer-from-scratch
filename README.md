@@ -79,7 +79,21 @@ Digunakan untuk eksplorasi interaktif, pemahaman mendalam, dan melihat visualisa
 
 ## 📋 Bukti Uji
 
-Output dari `main.py` atau `transformer.ipynb` akan menunjukkan bukti uji seperti pengecekan dimensi, hasil masking, dan validasi softmax.
+Output dari `main.py` atau `transformer.ipynb` akan menunjukkan bukti uji seperti hasil masking, pengecekan dimensi, dan validasi softmax.
+### **Output Uji Masking**
+```bash
+[[  0. -inf -inf -inf -inf -inf -inf -inf -inf -inf]
+ [  0.   0. -inf -inf -inf -inf -inf -inf -inf -inf]
+ [  0.   0.   0. -inf -inf -inf -inf -inf -inf -inf]
+ [  0.   0.   0.   0. -inf -inf -inf -inf -inf -inf]
+ [  0.   0.   0.   0.   0. -inf -inf -inf -inf -inf]
+ [  0.   0.   0.   0.   0.   0. -inf -inf -inf -inf]
+ [  0.   0.   0.   0.   0.   0.   0. -inf -inf -inf]
+ [  0.   0.   0.   0.   0.   0.   0.   0. -inf -inf]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0. -inf]
+ [  0.   0.   0.   0.   0.   0.   0.   0.   0.   0.]]
+```
+
 ### **Output Pengecekan Dimensi**
 ```bash
 Bentuk Input Tokens: (2, 10)
