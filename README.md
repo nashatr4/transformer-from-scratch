@@ -50,16 +50,18 @@ Proyek ini telah mengimplementasikan komponen-komponen berikut :
 7.  Causal Masking
 8.  Output Layer (Proyeksi Logits + Softmax)
 
-## ⚙️ Dependensi
 
-Implementasi inti dari arsitektur ini hanya membutuhkan **NumPy**.
-
-```bash
-pip install numpy
-```
 ## ▶️ Cara Menjalankan
 
-Ada dua cara untuk menjalankan kode ini.
+1. Clone repositori ini dengan menjalankan perintah
+```bash
+git clone https://github.com/nashatr4/transformer-from-scratch.git
+```
+2. Install library (dependensi) yang dibutuhkan
+```bash
+pip install  numpy matplotlib 
+```
+Setelah instalasi selesai, ada dua cara untuk menjalankan kode ini.
 
 ### **Opsi 1: Menjalankan Skrip Python (main.py)**
 Digunakan untuk verifikasi cepat alur forward pass dan melihat hasil pengecekan dimensi di terminal.
