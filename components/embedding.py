@@ -1,9 +1,11 @@
+# /components/embedding.py
 import numpy as np
 
 class TokenEmbedding:
   """Mengubah token integer menjadi vektor embedding"""
   def __init__(self, vocab_size, d_model):
-    self.embedding_matrix = np.random.randn(vocab_size, d_model)
+    scale = 1 / np.sqrt(d_model)
+    self.embedding_matrix = np.random.randn(vocab_size, d_model) * scale
 
   def forward(self, token_indices):
     return self.embedding_matrix[token_indices]

@@ -1,3 +1,4 @@
+# /components/layers.py
 import numpy as np
 
 class LayerNormalization:
@@ -15,9 +16,12 @@ class LayerNormalization:
 class FeedForwardNetwork:
   """Implementasi feed-forward network"""
   def __init__(self, d_model, d_ff):
-    self.W1 = np.random.randn(d_model, d_ff)
+    scale1 = 1 / np.sqrt(d_model)
+    scale2 = 1 / np.sqrt(d_ff)
+    
+    self.W1 = np.random.randn(d_model, d_ff) * scale1
     self.b1 = np.zeros(d_ff)
-    self.W2 = np.random.randn(d_ff, d_model)
+    self.W2 = np.random.randn(d_ff, d_model) * scale2
     self.b2 = np.zeros(d_model)
 
   def relu(self, x):

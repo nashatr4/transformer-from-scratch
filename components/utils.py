@@ -1,3 +1,4 @@
+# /components/utils.py
 import numpy as np
 
 def softmax(x):

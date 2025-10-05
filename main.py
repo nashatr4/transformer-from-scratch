@@ -1,3 +1,4 @@
+# main.py
 import numpy as np
 from components.embedding import TokenEmbedding, PositionalEncoding
 from components.attention import MultiHeadAttention
@@ -7,14 +8,14 @@ from components.utils import causal_mask, softmax
 # Hyperparameter
 vocab_size = 1000
 d_model = 512
-seq_len = 5
+seq_len = 10
 batch_size = 2
 num_heads = 8
 d_ff = 2048 
 
 # Input dan mask
 input_tokens = np.random.randint(0, vocab_size, size=(batch_size, seq_len))
-causal_mask = causal_mask(seq_len)
+mask = causal_mask(seq_len)
 
 print(f"Bentuk Input Tokens: {input_tokens.shape}\n")
 
@@ -38,7 +39,7 @@ print(f"Bentuk setelah Embedding & Positional Encoding: {x.shape}")
 # Add & Norm + Multi-Head Attention
 residual_1 = x
 x_norm1 = norm1.forward(x)
-attention_output = mha_layer.forward(x_norm1, causal_mask)
+attention_output = mha_layer.forward(x_norm1, mask)
 x = residual_1 + attention_output # Residual Connection
 print(f"Bentuk setelah Multi-Head Attention: {x.shape}")
 

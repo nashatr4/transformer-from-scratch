@@ -1,3 +1,4 @@
+# /components/attention.py
 import numpy as np
 from components.utils import softmax
 
@@ -18,10 +19,11 @@ class MultiHeadAttention:
     self.num_heads = num_heads
     self.d_k = d_model // num_heads
 
-    self.W_q = np.random.randn(d_model, d_model)
-    self.W_k = np.random.randn(d_model, d_model)
-    self.W_v = np.random.randn(d_model, d_model)
-    self.W_o = np.random.randn(d_model, d_model)
+    scale = 1 / np.sqrt(d_model) # mencegah exploding gradients 
+    self.W_q = np.random.randn(d_model, d_model) * scale
+    self.W_k = np.random.randn(d_model, d_model) * scale
+    self.W_v = np.random.randn(d_model, d_model) * scale
+    self.W_o = np.random.randn(d_model, d_model) * scale
   
   def forward(self, x, mask=None):
     batch_size, seq_len, _ = x.shape
@@ -36,6 +38,9 @@ class MultiHeadAttention:
     K = K.reshape(batch_size, seq_len, self.num_heads, self.d_k).swapaxes(1, 2)
     V = V.reshape(batch_size, seq_len, self.num_heads, self.d_k).swapaxes(1, 2)
 
+    if mask is not None:
+      batch_size, _, seq_len, _ = Q.shape
+      mask = np.broadcast_to(mask, (batch_size, self.num_heads, seq_len, seq_len)) # memastikan ukuran mask sesuai
     # Hitung Attention
     attention_output = scaled_dot_product_attention(Q, K, V, mask)
 
